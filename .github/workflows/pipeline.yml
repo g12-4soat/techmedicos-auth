@@ -1,3 +1,4 @@
+name: Pipeline techmedicos-auth
 
 on:
   push:
@@ -67,7 +68,10 @@ jobs:
         run: dotnet build src/Serverless/**/*.csproj --no-restore
   
       - name: Prepare package
+        run: dotnet lambda package --project-location  src/Serverless/**/ --output-package auth_techmedicos.zip --configuration Release --framework net8.0
   
       - name: Deploy to AWS Lambda auth
+        run: aws lambda update-function-code --function-name tech-medicos-lambda-auth --zip-file fileb://./auth_techmedicos.zip
       
       - name: Deploy to AWS Lambda cadastro
+        run: aws lambda update-function-code --function-name tech-medicos-lambda-cadastro --zip-file fileb://./auth_techmedicos.zip
