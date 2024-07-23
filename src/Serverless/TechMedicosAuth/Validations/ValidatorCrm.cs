@@ -9,9 +9,23 @@ public static class ValidatorCrm
         if (string.IsNullOrWhiteSpace(crm))
             return false;
 
-        // Padrão para validar CRM no Brasil: 7 dígitos seguidos de um hífen e 2 letras maiúsculas
-        string pattern = @"^\d{7}-[A-Z]{2}$";
+        crm = LimparCrm(crm);
+
+        // Padrão para validar CRM no Brasil
+        string pattern = @"^\d+[A-Za-z]+$";
 
         return Regex.IsMatch(crm, pattern, RegexOptions.None, TimeSpan.FromSeconds(30));
+    }
+
+    public static string LimparCrm(string crm)
+    {
+        try
+        {
+            return Regex.Replace(crm.Trim(), @"[^\w]", "", RegexOptions.None, TimeSpan.FromSeconds(30));
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 }

@@ -16,6 +16,11 @@ public class PacienteValidation : AbstractValidator<PacienteDto>
             RuleFor(x => x.Cpf)
             .Must(ValidatorCPF.Validar).WithMessage("O CPF informado está inválido.");
         });
+        When(x => string.IsNullOrEmpty(x.Cpf) && string.IsNullOrWhiteSpace(x.Cpf), () =>
+        {
+            RuleFor(x => x.Email)
+            .Must(ValidatorEmail.Validar).WithMessage("O Email informado está inválido.");
+        });
 
         RuleFor(x => x.Email)
             .NotEmpty().WithMessage("Email deve ser informado.")
@@ -25,6 +30,11 @@ public class PacienteValidation : AbstractValidator<PacienteDto>
         {
             RuleFor(x => x.Email)
             .Must(ValidatorEmail.Validar).WithMessage("O Email informado está inválido.");
+        });
+        When(x => string.IsNullOrEmpty(x.Email) && string.IsNullOrWhiteSpace(x.Email), () =>
+        {
+            RuleFor(x => x.Cpf)
+            .Must(ValidatorCPF.Validar).WithMessage("O CPF informado está inválido.");
         });
 
         RuleFor(x => x.Senha)

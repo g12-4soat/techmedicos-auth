@@ -34,15 +34,22 @@ public class Functions
 
             var resLogin = Resultado.Falha<TokenDto>("Falha ao obter token");
 
-            if (request.Body.ToLower().Contains("cpf"))
+            if (request.Body.ToLower().Contains("cpf") || request.Body.ToLower().Contains("email"))
             {
                 var paciente = ObterPaciente(request, awsOptions.Value);
-                resLogin = await cognitoService.SignIn(paciente.Value.Cpf, paciente.Value.Senha);
+
+                var userName = !String.IsNullOrEmpty(paciente.Value.Cpf) ? paciente.Value.Cpf : paciente.Value.Email;
+
+                resLogin = await cognitoService.SignIn(userName, paciente.Value.Senha);
             }
-            else
+            else if (request.Body.ToLower().Contains("crm"))
             {
                 var medico = ObterMedico(request, awsOptions.Value);
                 resLogin = await cognitoService.SignIn(medico.Value.Crm, medico.Value.Senha);
+            }
+            else
+            {
+                return Response.BadRequest(resLogin.Notificacoes);
             }
 
             if (!resLogin.Sucesso)
@@ -51,7 +58,7 @@ public class Functions
             }
 
             var tokenResult = resLogin.Value;
-            return !string.IsNullOrEmpty(tokenResult.AccessToken) ? Response.Ok(tokenResult) : Response.BadRequest("Não possui token"); 
+            return !string.IsNullOrEmpty(tokenResult.AccessToken) ? Response.Ok(tokenResult) : Response.BadRequest("Não possui token");
         }
         catch (Exception ex)
         {
@@ -76,11 +83,11 @@ public class Functions
             var usuario = ObterPaciente(request, awsOptions.Value);
 
             var resultadoValidacaoUsuario = new PacienteValidation().Validate(usuario.Value);
-            if(!resultadoValidacaoUsuario.IsValid)
+            if (!resultadoValidacaoUsuario.IsValid)
             {
                 return Response.BadRequest(resultadoValidacaoUsuario.Errors.Select(x => new NotificacaoDto(x.ErrorMessage)).ToList());
             }
-            
+
             var resultadoCadastroUsuario = await cognitoService.SignUp(usuario.Value);
             if (!resultadoCadastroUsuario.Sucesso)
             {
@@ -108,15 +115,16 @@ public class Functions
         var pacienteDes = JsonConvert.DeserializeObject<PacienteDto>(request.Body) ?? new PacienteDto();
         ArgumentNullException.ThrowIfNull(pacienteDes);
 
-        if (!CampoFoiInformado(pacienteDes.Cpf))
-            return Resultado.Falha<PacienteDto>("Cpf inválido!");
+        if (!String.IsNullOrEmpty(pacienteDes.Email))
+        {
+            return Resultado.Ok(pacienteDes);
+        }
 
         string cpf = pacienteDes.Cpf ?? string.Empty;
         string cpfLimpo = ValidatorCPF.LimparCpf(cpf);
-        string email = pacienteDes.Email ?? string.Empty;
         string senha = pacienteDes.Senha ?? string.Empty;
-        var paciente = new PacienteDto(string.IsNullOrEmpty(cpfLimpo) ? cpf : cpfLimpo, email, senha);
-        return Resultado.Ok(paciente); 
+        var paciente = new PacienteDto(string.IsNullOrEmpty(cpfLimpo) ? cpf : cpfLimpo, pacienteDes.Email, senha);
+        return Resultado.Ok(paciente);
     }
 
     private Resultado<MedicoDto> ObterMedico(APIGatewayProxyRequest request, AWSOptions awsOptions)
@@ -128,8 +136,9 @@ public class Functions
             return Resultado.Falha<MedicoDto>("Crm inválido!");
 
         string crm = medicoDes.Crm ?? string.Empty;
+        string crmLimpo = ValidatorCrm.LimparCrm(crm);
         string senha = medicoDes.Senha ?? string.Empty;
-        var medico = new MedicoDto(crm, senha);
+        var medico = new MedicoDto(string.IsNullOrEmpty(crmLimpo) ? crm : crmLimpo, senha);
         return Resultado.Ok(medico);
     }
 

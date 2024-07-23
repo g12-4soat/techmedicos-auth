@@ -11,7 +11,7 @@ namespace TechMedicosAuthTest.UnitTests.Fixtures
             {
                 new NotificacaoDto("Mensagem de notificação teste"),
                 new NotificacaoDto("Mensagem de notificação teste 2")
-            }; 
+            };
         }
 
         public string GerarMensagemNotificacao()
@@ -36,6 +36,11 @@ namespace TechMedicosAuthTest.UnitTests.Fixtures
 
         public string GerarEmailValido()
             => "test.xpto@gmail.com";
+        public string GerarCrmValido()
+            => "90.264/SP";
+
+        public string GerarCrmValidoELimpo()
+           => "90264SP";
 
         public string GerarEmailInvalido()
             => "test.xpto@gmail";
@@ -43,8 +48,17 @@ namespace TechMedicosAuthTest.UnitTests.Fixtures
         public string GerarTelefoneValido()
            => "+5511948792154";
 
+        public string GerarSenhaValido()
+           => "tzHWCAfzR7";
+
         public string GerarTelefoneInvalido()
             => "5511948792154";
+
+        public string GerarCrmInvalido()
+             => "SP90.2641111111/SP";
+
+        public string GerarSenhaInvalido()
+           => "111111";
         public void Dispose()
         {
         }
