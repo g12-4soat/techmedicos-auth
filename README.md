@@ -1,4 +1,4 @@
-<p dir="auto"><img src="https://github.com/g12-4soat/tech-medicos/blob/main/src/Techmedicos/Adapter/Driver/Techmedicos.Adapter.API/wwwroot/SwaggerUI/images/android-chrome-192x192.png" alt="TECHmedicos" title="TECHmedicos" align="right" height="60" style="max-width: 100%;"></p>
+<p dir="auto"><img src="https://github.com/g12-4soat/techmedicos-auth/blob/feature/readme/docs/hackaton/Imagem/logo-techmedicos.png" alt="TECHMEDICOS" title="TECHMEDICOS" align="right" height="60" style="max-width: 100%;"></p>
 
 # Tech Medicos Auth
 Projeto Hackaton
@@ -7,8 +7,8 @@ Repositório dedicado ao projeto de autenticação do Hackaton da FIAP - Turma 4
 
 # Descrição
 
-Este projeto faz parte do curso de pós-graduação em Arquitetura de Software oferecido pela FIAP. Nosso objetivo é demonstrar como implementamos os recursos AWS que são necessários para o Sign In e Sign Up do usuário na aplicação Tech Médicos.
-
+Este projeto faz parte do desafio hackaton do curso de pós-graduação em Arquitetura de Software oferecido pela FIAP. Este projeto visa demonstrar a aplicação prática e avançada de desenvolvimento de uma soluções modernas para gestão de usuários. O projeto tem como foco principal a implementação e configuração de mecanismos de Sign In (autenticação) e Sign Up (cadastro) de usuários na aplicação Tech Médicos, uma plataforma digital voltada para o gerenciamento de consultas médicas com gestão de prontuários compartilhado.
+A arquitetura da solução é baseada em AWS Lambda, um serviço de computação serverless que executa código em resposta a eventos e automaticamente gerencia os recursos computacionais necessários. Utilizando a abordagem serverless, buscamos alcançar uma solução altamente escalável, de baixo custo e de fácil manutenção, adequada para ambientes de alta demanda e com variações de tráfego.
 # Documentação
 
 <h4 tabindex="-1" dir="auto" data-react-autofocus="true">Stack</h4>
@@ -58,8 +58,8 @@ Da raiz do repositório, execute os seguintes comandos no terminal:
 
 ## Postman 
 Para importar as collections do postman, basta acessar os links a seguir:
-- Collection: ADD COLLECTION POSTMAN
-- Local Environment: ADD ENVIRONMENT
+- Collection: https://github.com/g12-4soat/techmedicos-auth/blob/main/docs/hackaton/techmedicosauth.postman_collection.json
+- Local Environment: https://github.com/g12-4soat/techmedicos-auth/blob/main/docs/hackaton/TechMedicos.postman_environment.json
 
 > Quando uma nova instância do API Gateway é criada, uma nova URL é gerada, exigindo a atualização manual da URL na Enviroment do Postman.
   ---
@@ -70,7 +70,7 @@ Para importar as collections do postman, basta acessar os links a seguir:
   <summary>Versões</summary>
 
 ## Software
-- C-Sharp - 10.0
+- C-Sharp - 12.0
 - .NET - 8.0
 </details>
 
