@@ -1,4 +1,4 @@
-<p dir="auto"><img src="https://github.com/g12-4soat/techmedicos-auth/blob/feature/readme/docs/hackaton/Imagem/logo-techmedicos.png" alt="TECHMEDICOS" title="TECHMEDICOS" align="right" height="60" style="max-width: 100%;"></p>
+<p dir="auto"><img src="https://github.com/g12-4soat/techmedicos-auth/blob/main/docs/hackaton/Imagem/logo-techmedicos.png" alt="TECHMEDICOS" title="TECHMEDICOS" align="right" height="60" style="max-width: 100%;"></p>
 
 # Tech Medicos Auth
 Projeto Hackaton
