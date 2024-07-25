@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "49b5d551-16d1-4d1c-8557-2c749af416e1",
+		"name": "Tech Medicos Hackaton Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17846603",
+		"_collection_link": "https://red-robot-133413.postman.co/workspace/Teste~2e4990a5-a525-4806-8c4c-49a4fd1761b8/collection/17846603-49b5d551-16d1-4d1c-8557-2c749af416e1?action=share&source=collection_link&creator=17846603"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Auth - Paciente(cpf)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"16756333631\",\r\n    \"senha\": \"}6#Xjw!4nq!Zv0&y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{authUrl}}/auth"
+					},
+					"response": []
+				},
+				{
+					"name": "Auth - Paciente(email)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@teste.com\",\r\n    \"senha\": \"}6#Xjw!4nq!Zv0&y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{authUrl}}/auth"
+					},
+					"response": []
+				},
+				{
+					"name": "Auth - Medico(crm)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"crm\": \"90264sp\",\r\n    \"senha\": \"+EtY<2CJHI}B4M!F\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{authUrl}}/auth"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
