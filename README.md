@@ -58,8 +58,8 @@ Da raiz do repositório, execute os seguintes comandos no terminal:
 
 ## Postman 
 Para importar as collections do postman, basta acessar os links a seguir:
-- Collection: https://github.com/g12-4soat/techmedicos-auth/blob/main/docs/hackaton/techmedicosauth.postman_collection.json
-- Local Environment: https://github.com/g12-4soat/techmedicos-auth/blob/main/docs/hackaton/TechMedicos.postman_environment.json
+- Collection: https://github.com/g12-4soat/techmedicos-docs/blob/main/collections/Tech%20Medicos%20Hackaton%20Auth.postman_collection.json
+- Local Environment: https://github.com/g12-4soat/techmedicos-docs/blob/main/collections/TechMedicos.postman_environment.json
 
 > Quando uma nova instância do API Gateway é criada, uma nova URL é gerada, exigindo a atualização manual da URL na Enviroment do Postman.
   ---
